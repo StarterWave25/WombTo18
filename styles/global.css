@@ -1,21 +1,25 @@
 :root {
   --black: #000000;
-
   --gray-900: #101010;
   --gray-700: #494c4f;
   --gray-300: #c3c2c2;
   --gray-200: #eaeaea;
   --gray-50:  #f1fafb;
   --white:    #ffffff;
-
   --green-primary: #278575;
   --green-dark:    #134e1a;
   --green-mint:    #bbf5dd;
-
   --orange-accent: #eb8949;
-
   --blue-brand: #051145;
   --blue-muted: #4b6c97;
-
   --green-success: #25d366;
+  
+  --font-main: 'Inter', sans-serif;
+  --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }

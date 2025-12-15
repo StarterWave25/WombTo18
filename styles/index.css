@@ -157,8 +157,7 @@ body {
 
 .headline-container {
   text-align: center;
-  margin-bottom: 44px;
-  margin-top: 10px;
+  margin: 40px 0;
 }
 
 .main-heading {
@@ -331,8 +330,8 @@ body {
 /* ------------------------------------- */
 .authority-section {
   width: 100%;
-  padding-top: 40px; /* Separation from cards (multiple of 8) */
-  padding-bottom: 32px;
+  padding: 48px 0;
+  /* Separation from cards (multiple of 8) */
 }
 
 .authority-heading {
@@ -350,17 +349,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* Allows wrap on smaller screens */
-  gap: 40px; /* Clear separation (multiple of 8) */
+  flex-wrap: wrap;
+  /* Allows wrap on smaller screens */
+  gap: 64px;
+  /* Clear separation (multiple of 8) */
 }
 
 .authority-logo {
-  height: 48px; 
+  height: 80px;
   width: auto;
-  max-width: 120px;
-  opacity: 0.6;
-  filter: grayscale(100%);
-  transition: opacity 0.3s ease, filter 0.3s ease;
+  max-width: 160px;
+  opacity: 0.9;
+  filter: grayscale(90%);
+  transition: all 0.3s ease-in-out;
 }
 
 .authority-logo:hover {

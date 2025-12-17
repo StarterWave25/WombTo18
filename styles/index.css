@@ -144,7 +144,8 @@ body {
   display: flex;
   flex-direction: column;
   padding-top: 112px;
-  padding-bottom: 0; /* REMOVED SPACE BETWEEN SECTIONS */
+  padding-bottom: 0;
+  /* REMOVED SPACE BETWEEN SECTIONS */
 }
 
 .content-center {
@@ -373,7 +374,8 @@ body {
 .bento-value-section {
   /* Subtle background gradient to differentiate section */
   background: linear-gradient(180deg, var(--gray-50) 0%, #e8f4f8 100%);
-  padding: 40px 0 80px 0; /* REDUCED SPACING - top from 80px, bottom from 96px */
+  padding: 40px 0 80px 0;
+  /* REDUCED SPACING - top from 80px, bottom from 96px */
   position: relative;
 }
 
@@ -396,7 +398,8 @@ body {
   font-weight: 400;
   text-align: center;
   max-width: 1000px;
-  margin: 0 auto 48px; /* DECREASED SPACING (from 64px) */
+  margin: 0 auto 48px;
+  /* DECREASED SPACING (from 64px) */
   line-height: 1.1;
   position: relative;
   z-index: 1;
@@ -409,7 +412,8 @@ body {
   grid-template-rows: repeat(2, 220px);
   gap: 24px;
   max-width: 1300px;
-  margin: 0 auto 48px; /* DECREASED SPACING (from 64px) */
+  margin: 0 auto 48px;
+  /* DECREASED SPACING (from 64px) */
   position: relative;
   z-index: 1;
 }
@@ -434,13 +438,18 @@ body {
 
 /* New Hover Effect: Focus Ring / Inverted Corner Illusion */
 .bento-box:hover {
-  background: rgba(255, 255, 255, 0.95); /* Slightly brighter background */
-  box-shadow: 
-    0 4px 15px rgba(0, 0, 0, 0.05),  /* Keep a small outer shadow for depth */
-    inset 0 0 0 2px var(--green-dark), /* Inverted Corner Look: Subtle, sharp inner border (Focus Ring) */
-    inset 0 0 20px rgba(0, 0, 0, 0.05); /* Soft inner shadow for depth */
+  background: rgba(255, 255, 255, 0.95);
+  /* Slightly brighter background */
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.05),
+    /* Keep a small outer shadow for depth */
+    inset 0 0 0 2px var(--green-dark),
+    /* Inverted Corner Look: Subtle, sharp inner border (Focus Ring) */
+    inset 0 0 20px rgba(0, 0, 0, 0.05);
+  /* Soft inner shadow for depth */
   border-color: rgba(255, 255, 255, 1);
-  transform: none; /* Removed the previous translateY(-4px) lift */
+  transform: none;
+  /* Removed the previous translateY(-4px) lift */
 }
 
 /* Clear the old inner glow effect */
@@ -466,9 +475,11 @@ body {
 
 .bento-box.box-1:hover {
   /* Dark box still focuses, with a bright inner ring */
-  box-shadow: 
-    0 20px 40px rgba(5, 17, 69, 0.4), /* Outer dark shadow */
-    inset 0 0 0 2px var(--green-mint); /* Bright focus ring */
+  box-shadow:
+    0 20px 40px rgba(5, 17, 69, 0.4),
+    /* Outer dark shadow */
+    inset 0 0 0 2px var(--green-mint);
+  /* Bright focus ring */
   transform: none;
   border-color: rgba(255, 255, 255, 0.4);
 }
@@ -560,8 +571,10 @@ body {
 
 .bento-heading {
   font-family: 'Outfit', sans-serif;
-  font-size: 24px; /* INCREASED FONT SIZE (from 20px to 24px) */
-  font-weight: 50; /* DECREASED FONT WEIGHT (from 700 to 500) */
+  font-size: 24px;
+  /* INCREASED FONT SIZE (from 20px to 24px) */
+  font-weight: 50;
+  /* DECREASED FONT WEIGHT (from 700 to 500) */
   margin-bottom: 8px;
   line-height: 1.3;
   color: var(--black);
@@ -582,7 +595,8 @@ body {
   display: flex;
   justify-content: center;
   gap: 24px;
-  margin-top: 32px; /* DECREASED SPACING (from 48px) */
+  margin-top: 32px;
+  /* DECREASED SPACING (from 48px) */
   padding-bottom: 0;
   flex-wrap: wrap;
   position: relative;
@@ -596,6 +610,336 @@ body {
   font-size: 16px;
   font-weight: 600;
 }
+
+
+/* ------------------------------------- */
+/* HOW IT WORKS - UPDATED HIGHLIGHT & COMPACT CARDS */
+/* ------------------------------------- */
+
+.how-it-works {
+  padding: 100px 0;
+  /* Slightly reduced section padding */
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* Headline Highlight */
+.step-highlight {
+  color: var(--green-dark);
+  background: linear-gradient(120deg, var(--green-mint) 0%, #d4f9eb 100%);
+  padding: 0 12px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  /* Reduced gap */
+  max-width: 1300px;
+  margin: 0 auto 60px;
+}
+
+.step-card-premium {
+  position: relative;
+  border-radius: 24px;
+  /* Slightly tighter corners */
+  padding: 40px 32px;
+  /* DECREASED PADDING to reduce height */
+  background: linear-gradient(145deg, #fcfdfe 0%, #f0f4f8 100%);
+  border: 1px solid rgba(5, 17, 69, 0.03);
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 300px;
+  /* LOWERED MIN-HEIGHT */
+}
+
+.step-bg-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 100% 50%, rgba(187, 245, 221, 0.4) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+/* Number Positioned at Right-Center - Smaller Size to fit compact card */
+.step-number-art {
+  font-family: 'DM Serif Display', serif;
+  font-size: 140px;
+  /* DECREASED SIZE from 180px */
+  font-weight: 400;
+  line-height: 1;
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(180deg, rgba(5, 17, 69, 0.1) 0%, rgba(5, 17, 69, 0.01) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+}
+
+.step-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 88%;
+}
+
+.step-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  /* Slightly smaller heading */
+  font-weight: 300;
+  color: var(--blue-brand);
+  margin-bottom: 16px;
+}
+
+.step-copy {
+  font-family: 'Outfit', sans-serif;
+  font-size: 17px;
+  /* Slightly smaller copy */
+  line-height: 1.5;
+  color: #4a4a4a;
+  font-weight: 300;
+}
+
+/* Hover Effect */
+.step-card-premium:hover {
+  background: #ffffff;
+  border-color: var(--green-dark);
+  box-shadow: 0 30px 60px rgba(5, 17, 69, 0.08);
+}
+
+.step-card-premium:hover .step-bg-glow {
+  opacity: 1;
+}
+
+.step-card-premium:hover .step-number-art {
+  background: linear-gradient(180deg, rgba(31, 165, 83, 0.15) 0%, rgba(31, 165, 83, 0.05) 100%);
+  -webkit-background-clip: text;
+}
+
+.how-cta-container {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-journey-master {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--blue-brand);
+  color: #fff;
+  padding: 22px 48px;
+  border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 20px 40px rgba(5, 17, 69, 0.2);
+}
+
+.btn-journey-master:hover {
+  background: var(--green-dark);
+  box-shadow: 0 25px 50px rgba(19, 78, 26, 0.3);
+}
+
+.btn-journey-master svg {
+  transition: transform 0.4s ease;
+}
+
+.btn-journey-master:hover svg {
+  transform: translateX(8px);
+}
+
+/* ------------------------------------- */
+/* FOMO & SCARCITY - ELITE JEWEL TONE EDITION */
+/* ------------------------------------- */
+
+.fomo-urgency {
+  padding: 100px 0;
+  background: #ffffff;
+}
+
+.fomo-card {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #ffffff;
+  /* SKIN BORDER */
+  border: 1.5px solid #eaeaea;
+  border-radius: 40px;
+  padding: 80px 40px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.02);
+  
+  /* GRID BACKGROUND (User's logic preserved) */
+  background-image:
+    radial-gradient(circle at center, rgba(234, 234, 234, 0.4) 0%, transparent 70%),
+    repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(234, 234, 234, 0.5) 39px, rgba(234, 234, 234, 0.5) 60px),
+    repeating-linear-gradient(30deg, transparent, transparent 19px, rgba(234, 234, 234, 0.5) 39px, rgba(234, 234, 234, 0.5) 60px);
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* LIVE INDICATOR STYLES */
+.live-status-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #9b2226; /* Deeper Ruby Red for prestige */
+  letter-spacing: 0.12em;
+  background: rgba(155, 34, 38, 0.05);
+  padding: 8px 20px;
+  border-radius: 100px;
+  border: 1px solid rgba(155, 34, 38, 0.1);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #bb3e03; /* Ember color */
+  border-radius: 50%;
+  animation: pulse-red-glow 1.5s infinite;
+}
+
+@keyframes pulse-red-glow {
+  0% { box-shadow: 0 0 0 0 rgba(187, 62, 3, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(187, 62, 3, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(187, 62, 3, 0); }
+}
+
+/* HEADING */
+.fomo-headline {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(32px, 5vw, 54px);
+  color: #051145;
+  margin-bottom: 50px;
+  line-height: 1.1;
+  font-weight: 400;
+  position: relative;
+  z-index: 2;
+}
+
+.scarcity-engine {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  position: relative;
+  z-index: 2;
+}
+
+/* THE PROGRESS BAR (RUBY GLASS UPGRADE) */
+.progress-track {
+  width: 100%;
+  height: 12px; /* Thinner for elegance */
+  background: rgba(0, 0, 0, 0.084); /* Near transparent to show grid */
+  border-radius: 100px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.39);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.progress-fill-red {
+  width: 91%;
+  height: 100%;
+  /* Gradient from Crimson to Ruby */
+  background: linear-gradient(90deg, #ce1a20 0%, #e71b09 100%);
+  border-radius: 100px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(155, 34, 38, 0.2);
+}
+
+/* SLOT TEXT (PREMIUM NAVY) */
+.percentage-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #051145; 
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+/* CTA & HOVER (EMERALD FOREST UPGRADE) */
+.fomo-cta-wrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-fomo-register {
+  /* Deep Forest Emerald: Looks much more premium than standard green */
+  background: #038462; 
+  color: #ffffff;
+  padding: 22px 64px;
+  border-radius: 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 10px 30px rgba(6, 78, 59, 0.2);
+}
+
+/* NO SCALE - Just Lighting & Depth change */
+.btn-fomo-register:hover {
+  background-color: #065f46;
+  box-shadow: 0 20px 40px rgba(6, 78, 59, 0.3);
+}
+
+/* Glass Light Sweep on Hover */
+.btn-fomo-register::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.btn-fomo-register:hover::before {
+  left: 100%;
+}
+
+@media (max-width: 768px) {
+  .fomo-card { padding: 50px 20px; border-radius: 24px; }
+  .fomo-headline { font-size: 32px; }
+  .percentage-text { font-size: 20px; }
+  .btn-fomo-register { width: 100%; padding: 20px; }
+}
+
 
 /* ------------------------------------- */
 /* RESPONSIVE DESIGN */

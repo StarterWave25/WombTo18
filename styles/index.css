@@ -1078,74 +1078,6 @@ body {
 }
 
 
-/* ------------------------------------- */
-/* RESPONSIVE DESIGN */
-/* ------------------------------------- */
-
-@media (max-width: 1200px) {
-  .bento-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-  }
-
-  .bento-box.box-1 {
-    grid-column: 1 / 3;
-    grid-row: 1;
-  }
-
-  .bento-box.box-2,
-  .bento-box.box-3,
-  .bento-box.box-4,
-  .bento-box.box-5 {
-    grid-column: span 1;
-    grid-row: auto;
-  }
-
-  .bento-box.box-6,
-  .bento-box.box-7 {
-    grid-column: 1 / 3;
-    grid-row: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .bento-value-section {
-    padding: 60px 0;
-  }
-
-  .section-title {
-    font-size: 2rem;
-    margin-bottom: 40px;
-  }
-
-  .bento-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-    gap: 16px;
-  }
-
-  .bento-box.box-1,
-  .bento-box.box-2,
-  .bento-box.box-3,
-  .bento-box.box-4,
-  .bento-box.box-5,
-  .bento-box.box-6,
-  .bento-box.box-7 {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .bento-box.box-6,
-  .bento-box.box-7 {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .bento-box.box-6 .bento-visual,
-  .bento-box.box-7 .bento-visual {
-    margin-bottom: 16px;
-  }
-}
 
 /* ------------------------------------- */
 /* MEDICAL EXPERTS - ELITE EDITORIAL CSS */
@@ -1339,4 +1271,213 @@ body {
   .doctor-text-side::before { font-size: 100px; top: -20px; }
   .doctor-shade-overlay { opacity: 1; transform: translateY(0); }
   .btn-doctors-join { width: 100%; padding: 20px; }
+}
+
+/* ------------------------------------- */
+/* TREES SECTION - NO HEADER IMMERSION  */
+/* ------------------------------------- */
+
+.trees-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  z-index: 9999; /* Ensures it sits above any global headers */
+}
+
+/* 1. BACKGROUND VIDEO */
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.93); 
+  
+  image-rendering: optimizeQuality;
+  interpolation-mode: bicubic;
+}
+
+/* 2. UI LAYER - REMOVES HEADER SPACE */
+.tree-ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 20px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent, rgba(0,0,0,0.4));
+}
+
+/* 3. TOP HEADING */
+.tree-top-headline {
+  font-family: 'DM Serif Display', serif;
+  /* Increased size for maximum authority */
+  font-size: clamp(36px, 6vw, 68px); 
+  color: #ffffff;
+  text-align: center;
+  max-width: 1100px;
+  letter-spacing: 0.05em; 
+  line-height: 1.1;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+  text-transform: capitalize;
+}
+
+/* 4. DIGITAL TICKER (Visual Live Counter) */
+.tree-center-cluster {
+  text-align: center;
+}
+
+.ticker-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.ticker-digit, .ticker-comma {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(60px, 12vw, 120px);
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.ticker-digit {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0 15px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  text-shadow: 0 0 20px rgba(3, 132, 98, 0.5);
+}
+
+/* The "Live" Visual Cue - making the last digit pulse */
+.special-pulse {
+  color: #038462;
+  animation: digit-blink 2s infinite ease-in-out;
+}
+
+.counter-status {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.legacy-subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 10px;
+}
+
+/* 5. GLASS CTA */
+.btn-glass-legacy {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  color: #ffffff;
+  padding: 22px 60px;
+  border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.btn-glass-legacy:hover {
+  background: rgba(3, 132, 98, 0.3);
+  border-color: #038462;
+  box-shadow: 0 0 40px rgba(3, 132, 98, 0.4);
+}
+
+@keyframes digit-blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); color: #05f0b1; }
+}
+
+@media (max-width: 768px) {
+  .ticker-wrapper { gap: 4px; }
+  .ticker-digit { padding: 0 8px; border-radius: 8px; }
+}
+
+/* ------------------------------------- */
+/* RESPONSIVE DESIGN */
+/* ------------------------------------- */
+
+@media (max-width: 1200px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .bento-box.box-1 {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+
+  .bento-box.box-2,
+  .bento-box.box-3,
+  .bento-box.box-4,
+  .bento-box.box-5 {
+    grid-column: span 1;
+    grid-row: auto;
+  }
+
+  .bento-box.box-6,
+  .bento-box.box-7 {
+    grid-column: 1 / 3;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-value-section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+  }
+
+  .bento-box.box-1,
+  .bento-box.box-2,
+  .bento-box.box-3,
+  .bento-box.box-4,
+  .bento-box.box-5,
+  .bento-box.box-6,
+  .bento-box.box-7 {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .bento-box.box-6,
+  .bento-box.box-7 {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bento-box.box-6 .bento-visual,
+  .bento-box.box-7 .bento-visual {
+    margin-bottom: 16px;
+  }
 }

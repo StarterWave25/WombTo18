@@ -1,0 +1,534 @@
+:root {
+  --black: #000000;
+  --gray-900: #101010;
+  --gray-700: #494c4f;
+  --gray-300: #c3c2c2;
+  --gray-200: #eaeaea;
+  --gray-50: #f1fafb;
+  --white: #ffffff;
+  --green-primary: #278575;
+  --green-mint: #bbf5dd;
+  --orange-accent: #e47d38;
+  --blue-brand: #051145;
+
+  --radius-xl: 32px;
+  --radius-sm: 12px;
+  --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+}
+
+body {
+  background-color: var(--gray-50);
+  font-family: 'Outfit', sans-serif;
+  color: var(--gray-900);
+  padding: 80px 24px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 12-Column Responsive Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(3, 220px);
+  gap: 24px;
+  /* Multiples of 8  */
+}
+
+.bento-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  box-shadow: var(--shadow-premium);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.bento-card:hover {
+  transform: scale(1.02);
+}
+
+/* Sizing Hierarchy [cite: 4] */
+.box-1 {
+  padding: 80px;
+  background: linear-gradient(180deg, var(--white) 0%, var(--gray-50) 100%);
+  grid-column: span 7;
+  grid-row: span 2;
+}
+
+.box-2 {
+  grid-column: span 5;
+  grid-row: span 1;
+}
+
+.box-3 {
+  grid-column: span 5;
+  grid-row: span 1;
+}
+
+.box-4 {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.box-5 {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.box-6 {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+.box-7 {
+  grid-column: span 3;
+  grid-row: span 1;
+}
+
+/* Box 2 Notification Refinements */
+.box-2 {
+  background: var(--white);
+}
+
+.icon-wrap {
+  position: relative;
+  /* For the badge dot */
+}
+
+.badge-dot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background: var(--orange-accent);
+  /* High-contrast accent color [cite: 11] */
+  border: 2px solid var(--white);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+/* Professional Stacked UI */
+.notification-stack {
+  margin-top: auto;
+  padding-top: var(--space-24);
+}
+
+.floating-alert {
+  background: var(--white);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  /* Soft ambient shadow */
+  border: 2px solid var(--green-primary);
+  /* Directional cue [cite: 14] */
+  transition: var(--transition);
+}
+
+.alert-title {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--green-primary);
+  letter-spacing: 0.05em;
+}
+
+.alert-desc {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--gray-900);
+}
+
+.alert-action {
+  color: var(--gray-300);
+}
+
+
+@keyframes ringPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* Updated Pulse Origin for Slimmer Height */
+.pulse-ring {
+  animation: ringPulse 2.5s infinite;
+  transform-origin: 100px 22px;
+  /* Adjusted to new Y coordinate */
+}
+
+/* Typography [cite: 7, 8] */
+.box-1 .display-text {
+  font-family: 'DM Serif Display', serif;
+  /* Reduced font size slightly for better proportions in a smaller box */
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin-top: 8px;
+  background: linear-gradient(to bottom right, var(--blue-brand), #4a90e2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ui-text {
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.4;
+  color: var(--gray-900);
+}
+
+/* Visual Elements */
+.icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.bg-mint {
+  background: var(--green-mint);
+  color: var(--green-primary);
+}
+
+.bg-blue {
+  background: #e0e7ff;
+  color: var(--blue-brand);
+}
+
+.accent-orange {
+  color: var(--orange-accent);
+}
+
+.box-4.dark-mode {
+  background: var(--blue-brand);
+  color: white;
+}
+
+.box-4.dark-mode .ui-text {
+  color: white;
+}
+
+.notification-ui {
+  background: var(--gray-50);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  border-left: 4px solid var(--green-primary);
+}
+
+.chart-mini {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 40px;
+}
+
+.bar {
+  width: 12px;
+  background: var(--blue-brand);
+  border-radius: 2px;
+  opacity: 0.2;
+}
+
+.seal {
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  background: var(--orange-accent);
+  color: white;
+  padding: 24px 32px;
+  border-radius: 50%;
+  transform: rotate(-15deg);
+  font-weight: 800;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+}
+
+/* Enhanced Card Typography */
+.ui-text-lg {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  /* Increased for better attention */
+  line-height: 1.25;
+  margin-top: 16px;
+  letter-spacing: -0.02em;
+}
+
+/* Individual Box Styles */
+.highlight-green {
+  background-color: var(--green-primary);
+  color: var(--white);
+}
+
+.highlight-green .icon-box {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+
+.highlight-blue {
+  background-color: var(--blue-muted);
+  color: var(--white);
+}
+
+.highlight-blue .icon-box {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+
+/* Refined Typography for Box 6 to prevent overflow */
+.box-6 .ui-text-lg {
+  font-size: 1.5rem;
+  /* Slightly reduced from 1.45rem to fit content */
+  line-height: 1.3;
+  max-width: 90%;
+  /* Ensures text doesn't hit the card edges */
+  margin-bottom: auto;
+  /* Pushes the flow-indicator to the bottom */
+}
+
+/* Specific structure for Box 6 */
+.box-6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* Keeps header at top */
+  padding: 40px;
+  /* Slightly tighter padding for better content fit */
+}
+
+.box-6 .card-header {
+  margin-bottom: 12px;
+}
+
+/* Ensures the icon doesn't crowd the text */
+.box-6 .icon-box-muted {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 8px;
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 1200px) {
+  .box-6 .ui-text-lg {
+    font-size: 1.15rem;
+  }
+}
+
+/* Icon & Decorative Components */
+.icon-box,
+.icon-box-muted {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-box-muted {
+  background: var(--gray-50);
+  color: var(--blue-brand);
+}
+
+.micro-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+
+.flow-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--green-success);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  animation: pulse 2s infinite;
+}
+
+.line-segment {
+  height: 2px;
+  width: 40px;
+  background: var(--gray-200);
+  border-radius: 2px;
+}
+
+/* Box 6 Specific Refinement */
+.status-green {
+  background-color: var(--white);
+  border: 2px solid var(--green-mint);
+  /* Subtle border to define shape [cite: 3] */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.status-green .icon-box-accent {
+  width: 48px;
+  height: 48px;
+  background: var(--green-mint);
+  color: var(--black);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Fix for Text Overflow */
+.ui-text-fixed {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  /* Adjusted down slightly to prevent overflow [cite: 9] */
+  line-height: 1.3;
+  color: var(--black);
+  /* Requested Green Color */
+  margin: 12px 0;
+  word-wrap: break-word;
+  /* Safety against long words */
+}
+
+.flow-ui {
+  margin-top: auto;
+}
+
+.pill {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--green-mint);
+  color: var(--green-primary);
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Ensure the bento grid rows can expand if content grows slightly [cite: 1] */
+.bento-grid {
+  grid-template-rows: repeat(auto-fill, minmax(200px, auto));
+}
+
+/* Box 7 Aesthetic Refinement */
+.status-blue {
+  background-color: var(--white);
+  border: 1.5px solid #e0e7ff;
+  padding: 24px;
+  /* Optimized spacing */
+}
+
+.ui-text-fixed-blue {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  color: var(--blue-brand);
+  margin: 16px 0;
+}
+
+.adherence-visual {
+  background: var(--gray-50);
+  border-radius: 16px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.sync-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--white);
+  padding: 8px 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.check-dot {
+  width: 10px;
+  height: 10px;
+  background: #25d366;
+  border-radius: 50%;
+}
+
+.sync-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--blue-brand);
+}
+
+.sync-item.pending {
+  opacity: 0.5;
+  background: transparent;
+  border: 1px dashed var(--gray-300);
+}
+
+.sync-item.pending .check-dot {
+  background: var(--gray-300);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(37, 211, 102, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* Mobile  */
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .bento-card {
+    grid-column: span 1 !important;
+    height: 240px;
+  }
+
+  .box-1 {
+    grid-column: span 2 !important;
+  }
+}

@@ -42,10 +42,41 @@ body {
   font-weight: 300;
   font-size: 16px;
   letter-spacing: 0.01em;
-  border-radius: 0;
-  display: block;
-  transition: none;
+  display: flex; /* Changed to flex to align pulse dot */
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
   cursor: default;
+}
+
+/* RED PULSE EFFECT USING ::BEFORE */
+.announcement-bar-inline p::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #f52222; /* Bright Red */
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+  box-shadow: 0 0 0 0 rgba(243, 28, 28, 0.954);
+  animation: live-pulse-red 1.5s infinite;
+}
+
+/* PULSE ANIMATION */
+@keyframes live-pulse-red {
+  0% {
+    transform: scale(0.80);
+    box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7);
+  }
+  70% {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 8px rgba(255, 77, 77, 0);
+  }
+  100% {
+    transform: scale(0.80);
+    box-shadow: 0 0 0 0 rgba(255, 77, 77, 0);
+  }
 }
 
 .announcement-bar-inline:hover {
@@ -54,11 +85,11 @@ body {
 
 /* Main Navigation: 3-column layout with Glassmorphism (80px height) */
 .main-nav {
-  height: 80px;
+  height: 70px;
   display: flex;
   align-items: center;
-  background: rgba(241, 250, 251, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(241, 250, 251, 0.402);
+  backdrop-filter: blur(7px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
@@ -76,7 +107,7 @@ body {
 }
 
 .logo-image {
-  height: 48px;
+  height: 40px;
   width: auto;
 }
 
@@ -115,7 +146,7 @@ body {
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 300;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 6px 15px rgba(5, 17, 69, 0.3);
@@ -750,6 +781,449 @@ body {
   }
 }
 
+/* ------------------------------------- */
+/* TESTIMONIALS - ELITE ICON + SHADE + RIGHT SHADOW */
+/* ------------------------------------- */
+
+.testimonials-section {
+  padding: 100px 0;
+  background-color: #ffffff;
+}
+
+.testimonial-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.testimonial-card {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 32px;
+  padding: 60px 80px;
+  border: 1px solid #f2f2f2;
+  display: flex; /* Added flex to align icon and content */
+  align-items: flex-start;
+  gap: 50px;
+  overflow: hidden;
+  
+  /* INNER SHADE EFFECT */
+  box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.03);
+  
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* GRADIENT SHADOW BLEEDING FROM THE RIGHT */
+.testimonial-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 140px;
+  height: 100%;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.04) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.testimonial-card:hover {
+  transform: translateX(-10px); /* Lift and shift towards right shadow */
+  box-shadow: inset 0 2px 15px rgba(0, 0, 0, 0.05), 0 20px 40px rgba(0,0,0,0.03);
+}
+
+/* THE LEFT ICON */
+.quote-icon-left {
+  flex-shrink: 0;
+  color: #051145; /* Brand Navy */
+  opacity: 0.12; /* Subtle and professional */
+  margin-top: 10px;
+}
+
+.testimonial-content {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.testimonial-heading {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #038462; /* Emerald Green */
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 15px;
+}
+
+/* ITALIC MAIN TEXT */
+.testimonial-main-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(24px, 3.2vw, 30px);
+  line-height: 1.4;
+  color: #1a1a1a;
+  font-style: italic; /* AS REQUESTED */
+  margin: 0 0 25px 0;
+}
+
+.testimonial-author {
+  font-family: 'Outfit', sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: #555;
+  margin: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .testimonial-card {
+    flex-direction: column;
+    padding: 40px 30px;
+    gap: 20px;
+  }
+  .quote-icon-left svg {
+    width: 40px;
+    height: auto;
+  }
+}
+
+
+
+/* ------------------------------------- */
+/* MEDICAL EXPERTS - ELITE EDITORIAL CSS */
+/* ------------------------------------- */
+
+.doctors-section {
+  padding: 120px 0;
+  background-color: #ffffff;
+}
+
+/* 1. MATCHING "GET STARTED" HIGHLIGHT STYLE */
+.highlight-box {
+  background: rgba(3, 132, 98, 0.05); /* Very light emerald tint */
+  color: #038462; /* Forest Emerald */
+  padding: 4px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(3, 132, 98, 0.15);
+  font-weight: 400;
+  display: inline-block;
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(34px, 5vw, 52px);
+  color: #051145;
+  text-align: center;
+  margin-bottom: 100px;
+  line-height: 1.2;
+}
+
+/* 2. THE ALTERNATING LIST */
+.doctors-alternating-list {
+  max-width: 1050px;
+  margin: 0 auto 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 120px; /* Increased gap for editorial breathing room */
+  counter-reset: doctor-counter; /* Initializes the 01, 02 numbers */
+}
+
+.doctor-row {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.doctor-row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* 3. IMAGE FRAME & BOTTOM SHADE HOVER */
+.doctor-image-side {
+  flex: 1;
+}
+
+.doctor-frame {
+  position: relative;
+  border: 1.5px solid #eaeaea;
+  padding: 12px;
+  border-radius: 40px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.doctor-img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 30px;
+  display: block;
+}
+
+.doctor-shade-overlay {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  padding: 60px 20px 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+.doctor-frame:hover .doctor-shade-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.designation-text {
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  display: block;
+  letter-spacing: 0.03em;
+}
+
+/* 4. NEW EDITORIAL TEXT DESIGN */
+.doctor-text-side {
+  flex: 1.2;
+  position: relative;
+}
+
+/* Large Background Number (01, 02) */
+.doctor-text-side::before {
+  content: "0" counter(doctor-counter);
+  counter-increment: doctor-counter;
+  position: absolute;
+  top: -40px;
+  left: -20px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 140px;
+  color: rgba(3, 132, 98, 0.06);
+  z-index: -1;
+}
+
+.doctor-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 44px;
+  color: #051145;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.doctor-description {
+  font-family: 'Outfit', sans-serif;
+  font-size: 19px;
+  line-height: 1.7;
+  color: #333;
+  padding: 5px 0 5px 30px;
+  background: transparent; /* No more routine boxes */
+  border-left: 2px solid #038462; /* Sharp emerald brand line */
+  position: relative;
+}
+
+/* Dot flourish on the brand line */
+.doctor-description::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: 8px;
+  height: 8px;
+  background: #038462;
+  border-radius: 50%;
+}
+
+/* 5. CENTERED CTA (NO SCALE) */
+.doctors-cta-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-doctors-join {
+  background: #038462;
+  color: #ffffff;
+  padding: 22px 64px;
+  border-radius: 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 25px rgba(3, 132, 98, 0.15);
+}
+
+.btn-doctors-join:hover {
+  background-color: #026b4f;
+  box-shadow: 0 15px 35px rgba(3, 132, 98, 0.3);
+}
+
+/* 6. MOBILE RESPONSIVE */
+@media (max-width: 992px) {
+  .doctor-row { gap: 40px; }
+  .doctor-name { font-size: 36px; }
+}
+
+@media (max-width: 768px) {
+  .doctor-row, .doctor-row.reverse { 
+    flex-direction: column; 
+    text-align: left; 
+    gap: 40px; 
+  }
+  .doctor-image-side { width: 100%; }
+  .doctor-text-side::before { font-size: 100px; top: -20px; }
+  .doctor-shade-overlay { opacity: 1; transform: translateY(0); }
+  .btn-doctors-join { width: 100%; padding: 20px; }
+}
+
+/* ------------------------------------- */
+/* TREES SECTION - NO HEADER IMMERSION  */
+/* ------------------------------------- */
+
+.trees-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+  z-index: 9999; /* Ensures it sits above any global headers */
+}
+
+/* 1. BACKGROUND VIDEO */
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  filter: brightness(0.93); 
+  
+  image-rendering: optimizeQuality;
+  interpolation-mode: bicubic;
+}
+
+/* 2. UI LAYER - REMOVES HEADER SPACE */
+.tree-ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 20px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent, rgba(0,0,0,0.4));
+}
+
+/* 3. TOP HEADING */
+.tree-top-headline {
+  font-family: 'DM Serif Display', serif;
+  /* Increased size for maximum authority */
+  font-size: clamp(36px, 6vw, 68px); 
+  color: #ffffff;
+  text-align: center;
+  max-width: 1100px;
+  letter-spacing: 0.05em; 
+  line-height: 1.1;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+  text-transform: capitalize;
+}
+
+/* 4. DIGITAL TICKER (Visual Live Counter) */
+.tree-center-cluster {
+  text-align: center;
+}
+
+.ticker-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.ticker-digit, .ticker-comma {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(60px, 12vw, 120px);
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.ticker-digit {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0 15px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  text-shadow: 0 0 20px rgba(3, 132, 98, 0.5);
+}
+
+/* The "Live" Visual Cue - making the last digit pulse */
+.special-pulse {
+  color: #038462;
+  animation: digit-blink 2s infinite ease-in-out;
+}
+
+.counter-status {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.legacy-subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 10px;
+}
+
+/* 5. GLASS CTA */
+.btn-glass-legacy {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  color: #ffffff;
+  padding: 22px 60px;
+  border-radius: 100px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.btn-glass-legacy:hover {
+  background: rgba(3, 132, 98, 0.3);
+  border-color: #038462;
+  box-shadow: 0 0 40px rgba(3, 132, 98, 0.4);
+}
+
+@keyframes digit-blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); color: #05f0b1; }
+}
+
+@media (max-width: 768px) {
+  .ticker-wrapper { gap: 4px; }
+  .ticker-digit { padding: 0 8px; border-radius: 8px; }
+}
 
 /* ------------------------------------- */
 /* RESPONSIVE DESIGN */

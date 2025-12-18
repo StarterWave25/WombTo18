@@ -1146,3 +1146,197 @@ body {
     margin-bottom: 16px;
   }
 }
+
+/* ------------------------------------- */
+/* MEDICAL EXPERTS - ELITE EDITORIAL CSS */
+/* ------------------------------------- */
+
+.doctors-section {
+  padding: 120px 0;
+  background-color: #ffffff;
+}
+
+/* 1. MATCHING "GET STARTED" HIGHLIGHT STYLE */
+.highlight-box {
+  background: rgba(3, 132, 98, 0.05); /* Very light emerald tint */
+  color: #038462; /* Forest Emerald */
+  padding: 4px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(3, 132, 98, 0.15);
+  font-weight: 400;
+  display: inline-block;
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(34px, 5vw, 52px);
+  color: #051145;
+  text-align: center;
+  margin-bottom: 100px;
+  line-height: 1.2;
+}
+
+/* 2. THE ALTERNATING LIST */
+.doctors-alternating-list {
+  max-width: 1050px;
+  margin: 0 auto 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 120px; /* Increased gap for editorial breathing room */
+  counter-reset: doctor-counter; /* Initializes the 01, 02 numbers */
+}
+
+.doctor-row {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.doctor-row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* 3. IMAGE FRAME & BOTTOM SHADE HOVER */
+.doctor-image-side {
+  flex: 1;
+}
+
+.doctor-frame {
+  position: relative;
+  border: 1.5px solid #eaeaea;
+  padding: 12px;
+  border-radius: 40px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.doctor-img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 30px;
+  display: block;
+}
+
+.doctor-shade-overlay {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  padding: 60px 20px 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+.doctor-frame:hover .doctor-shade-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.designation-text {
+  color: #ffffff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  display: block;
+  letter-spacing: 0.03em;
+}
+
+/* 4. NEW EDITORIAL TEXT DESIGN */
+.doctor-text-side {
+  flex: 1.2;
+  position: relative;
+}
+
+/* Large Background Number (01, 02) */
+.doctor-text-side::before {
+  content: "0" counter(doctor-counter);
+  counter-increment: doctor-counter;
+  position: absolute;
+  top: -40px;
+  left: -20px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 140px;
+  color: rgba(3, 132, 98, 0.06);
+  z-index: -1;
+}
+
+.doctor-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 44px;
+  color: #051145;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.doctor-description {
+  font-family: 'Outfit', sans-serif;
+  font-size: 19px;
+  line-height: 1.7;
+  color: #333;
+  padding: 5px 0 5px 30px;
+  background: transparent; /* No more routine boxes */
+  border-left: 2px solid #038462; /* Sharp emerald brand line */
+  position: relative;
+}
+
+/* Dot flourish on the brand line */
+.doctor-description::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: 8px;
+  height: 8px;
+  background: #038462;
+  border-radius: 50%;
+}
+
+/* 5. CENTERED CTA (NO SCALE) */
+.doctors-cta-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-doctors-join {
+  background: #038462;
+  color: #ffffff;
+  padding: 22px 64px;
+  border-radius: 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 25px rgba(3, 132, 98, 0.15);
+}
+
+.btn-doctors-join:hover {
+  background-color: #026b4f;
+  box-shadow: 0 15px 35px rgba(3, 132, 98, 0.3);
+}
+
+/* 6. MOBILE RESPONSIVE */
+@media (max-width: 992px) {
+  .doctor-row { gap: 40px; }
+  .doctor-name { font-size: 36px; }
+}
+
+@media (max-width: 768px) {
+  .doctor-row, .doctor-row.reverse { 
+    flex-direction: column; 
+    text-align: left; 
+    gap: 40px; 
+  }
+  .doctor-image-side { width: 100%; }
+  .doctor-text-side::before { font-size: 100px; top: -20px; }
+  .doctor-shade-overlay { opacity: 1; transform: translateY(0); }
+  .btn-doctors-join { width: 100%; padding: 20px; }
+}

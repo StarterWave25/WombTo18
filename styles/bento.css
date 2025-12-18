@@ -252,7 +252,7 @@
 .highlight-green {
     justify-content: center;
     gap: 48px;
-    background-color: var(--green-primary);
+    background-color: var(--green-dark);
     color: var(--white);
 }
 
